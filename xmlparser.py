@@ -4,8 +4,8 @@ class Device:
 		self.user = user_agent
 		self.fall = fall_back
 
-	def impridevice (self)
-                print 'ID: '+self.id+' User_Agent: '+self.user+' Fall_Back: '+self.fall
+	def impridevice (Device):
+                print ('ID: '+self.id+' User_Agent: '+self.user+' Fall_Back: '+self.fall)
 
 class Group:
 	def __init__ (self,id_group):
@@ -23,3 +23,7 @@ class Grupo:
 		self.capability = capability
 
 lista = open("device.xml",'r')
+
+
+print (lista)
+
