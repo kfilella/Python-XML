@@ -5,14 +5,14 @@ class Device:
 		self.fall = fall_back
 
 	def impridevice (self):
-                print 'Device: id='+self.id+' user_agent='+self.user+' fall_back='+self.fall
+                print ('Device: id='+self.id+' user_agent='+self.user+' fall_back='+self.fall)
 
 class Group:
 	def __init__ (self,id_group):
 		self.id = id_group
 
 	def imprigroup (self):
-                print 'Group: id='+self.id
+                print ('Group: id='+self.id)
 	
 class Capability:
 	def __init__ (self,name,value):
@@ -20,7 +20,7 @@ class Capability:
 		self.value = value
 
 	def impricapability (self):
-                print 'Capability: name='+self.name+' value='+self.value
+                print ('Capability: name='+self.name+' value='+self.value)
 
 class Grupo:
 	def __init__ (self,device,group,capability):
@@ -38,7 +38,12 @@ def quitarBasura(lines):
 with open('test1.xml') as f:
         lines = f.read().splitlines()
 lista = quitarBasura(lines)
-print lista
+
+for line in lista:
+	print line
+
+
+
 print "Archivo cargado."
 """
 a = Device ("id dev","user dev","fall dev")
