@@ -67,7 +67,8 @@ with open('test1.xml') as f:
         lines = f.read().splitlines()
 l=quitarencabezado(lines)
 lista = quitarBasura(l)
-print lista
+for line in lista:
+    print line
 print "Archivo cargado."
 """
 
