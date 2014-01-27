@@ -27,16 +27,25 @@ class Grupo:
 		self.device = device
 		self.group = group
 		self.capability = capability
+
+def quitarBasura(lines):
+        newlines = []
+        for str in lines:
+                newline = str.translate(None,"<>=/\" ")
+                newlines.append(newline)
+        return newlines
 		
 with open('test1.xml') as f:
-    lines = f.read().splitlines()
-print lines
+        lines = f.read().splitlines()
+lista = quitarBasura(lines)
+print lista
 print "Archivo cargado."
-#test
+"""
 a = Device ("id dev","user dev","fall dev")
 a.impridevice()
 b = Group ("id group")
 b.imprigroup()
 c = Capability ("name capa","value capa")
 c.impricapability()
-#test
+g = Grupo(a,b,c)
+"""
