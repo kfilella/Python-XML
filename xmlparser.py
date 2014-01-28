@@ -29,10 +29,10 @@ class Capability:
                 print 'Capability: name='+self.name+' value='+self.value
 
 class Grupo:
-    def __init__ (self,device,group,capability):
-        self.device = device
-        self.group = group
-        self.capability = capability
+    def __init__ (self,Device,Group,Capability):
+        self.device = Device
+        self.group = Group
+        self.capability = Capability
         
 def quitarBasura1(lines):
         newlines = []
@@ -49,10 +49,73 @@ def quitarBasura(lines):
                 #newline = str.translate(None,'<>=/\""')
                 newlines.append(quitarBasura1(newline))
         return newlines
+
+def creardevice(lista):
+    id=""
+    user=""
+    fall=""
+    for n in range(len(lista)):
+        if lista[n]=='id': 
+            id=lista[n+1]
+        else :
+            if lista[n]=='user_agent': 
+                user=lista[n+1]
+            else :
+                if lista[n]=='user_agent': 
+                    fall=lista[n+1]
+    return Device(id,user,fall)
     
-    
-    
-    
+def creargroup(lista):
+    id=""
+    for n in range(len(lista)):
+        if lista[n]=='id': 
+            id=lista[n+1]
+    return Group(id)
+        
+
+def crearcapability(lista):
+    name=""
+    value=""
+    for n in range(len(lista)):
+        if lista[n]=='name': 
+            name=lista[n+1]
+        else :
+            if lista[n]=='value': 
+                value=lista[n+1]
+    return Capability(name,value)     
+                
+
+def prinicpal(lista):
+    base =[]
+    d=Device("","","")
+    g=Group("")
+    c=Capability("","")
+    gro=Grupo(d,g,c)
+    for n in range(len(lista)):
+        lis=lista[n]
+        for s in range(len(lis)):
+            if 'devices' in lis[s]:
+                d=creardevice(lis)
+            if 'group' in lis[s]:
+                if len(lis[s])!=1:
+                    g=creargroup(lis)
+            if 'capability' in lis[s]:
+                c=crearcapability(lis)
+            gro=Grupo(d,g,c)
+            base.append(gro)
+    return base
+
+
+def imprimirbase(lista):
+    for n in range(len(lista)):
+        print lista[n].device.id
+        print lista[n].device.user
+        print lista[n].device.fall
+        print lista[n].group.id
+        print lista[n].capability.name
+        print lista[n].capability.value
+        
+        
 def quitarencabezado(lines):
         newl = []
         a=0
@@ -63,12 +126,14 @@ def quitarencabezado(lines):
                     newl.append(str)
         return newl
         
-with open('test1.xml') as f:
+with open('device.xml') as f:
         lines = f.read().splitlines()
 l=quitarencabezado(lines)
 lista = quitarBasura(l)
-for line in lista:
-    print line
+base=prinicpal(lista)
+imprimirbase(base) # no ejecutar si estas con el archivo grande.. XD
+#print lista
+print ":D"
 print "Archivo cargado."
 """
 
