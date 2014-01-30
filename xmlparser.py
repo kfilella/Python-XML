@@ -61,7 +61,7 @@ def creardevice(lista):
             if lista[n]=='user_agent': 
                 user=lista[n+1]
             else :
-                if lista[n]=='user_agent': 
+                if lista[n]=='fall_back': 
                     fall=lista[n+1]
     return Device(id,user,fall)
     
@@ -126,7 +126,7 @@ def quitarencabezado(lines):
                     newl.append(str)
         return newl
         
-with open('device.xml') as f:
+with open('test1.xml') as f:
         lines = f.read().splitlines()
 l=quitarencabezado(lines)
 lista = quitarBasura(l)
