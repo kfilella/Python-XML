@@ -3,6 +3,7 @@ Created on 26/01/2014
 
 @author: adrian
 '''
+import sys
 
 class Device:
     def __init__ (self,id_device,user_agent,fall_back):
@@ -94,7 +95,7 @@ def prinicpal(lista):
     for n in range(len(lista)):
         lis=lista[n]
         for s in range(len(lis)):
-            if 'devices' in lis[s]:
+            if 'device' in lis[s]:
                 d=creardevice(lis)
             if 'group' in lis[s]:
                 if len(lis[s])!=1:
@@ -125,16 +126,95 @@ def quitarencabezado(lines):
                 if a==1:
                     newl.append(str)
         return newl
+    
+def getDevice(grup):
+    return grup.device
+
+def iddevice(dev):
+    return dev.id
+def getCapability(gru):
+    return gru.capability
+    
+def namecapability(capa):
+    return capa.name
+    
+    
+#def buscarfallbacklista(opc,  lista):
+ #   print( "buscarfallback"++opc) 
+ 
+def buscarcapabilitylista(opc,base):
+    lista=[]
+    for x in base:
+        iddev= iddevice ( getDevice( x))
+        cp= namecapability ( getCapability( x))
+        if(opc==cp):
+            lista.append(iddev)
+    return lista
         
+        
+    
+    
+def buscar(lista,imput):
+    base=prinicpal(lista)
+    imprimirbase(base) # no ejecutar si estas con el archivo grande.. XD
+    #print lista
+    print ":D"
+    print "Archivo cargado."
+    if imput==1 :
+        print "Ingrese el Fall_back que desea buscar:"
+        opc=raw_input("Digite:")
+        print  "los device con el fall_back "+opc+" son :"
+        #lsta=  buscarfallbacklista(  opc, base)
+        
+        print ""
+        print ("el numero de dispositivos son: " )
+    else :
+        if imput==2:
+            print "Ingrese el Capability que desea buscar:"
+            opc=raw_input("Digite:")
+            print  "los device con el capability "+opc+" son :"
+            lst = buscarcapabilitylista(  opc ,base)
+            print lst 
+            print ""
+            print ("el numero de dispositivos son: ")
+            
+        else :
+            sys.exit(1)
+    
+    
+    
+print ""
+print ""
+print "**********Parser xml**********"
+print "*************************************"
+print "*Integrantes:                       *"
+print "*             Adrian Aguilar        *"
+print "*             Kevin Filella         *"
+print "*             Edison Sanchez        *"
+print "*                                   *"
+print "*************************************"
+print ""
+print ("Leyendo el archivo device.xml")
 with open('test1.xml') as f:
         lines = f.read().splitlines()
+print "cargado de documento exitoso"
 l=quitarencabezado(lines)
 lista = quitarBasura(l)
-base=prinicpal(lista)
-imprimirbase(base) # no ejecutar si estas con el archivo grande.. XD
 #print lista
-print ":D"
-print "Archivo cargado."
+print "que desea realizar?"
+print "1.-buscar device por fall Back"
+print "2.-buscar device por capability"
+print "3.-salir"
+n = input("Digite:")
+print n
+buscar( lista, n)
+
+
+
+
+
+
+
 """
 
 a = Device ("id dev","user dev","fall dev")
