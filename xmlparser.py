@@ -137,10 +137,20 @@ def getCapability(gru):
     
 def namecapability(capa):
     return capa.name
+def fallbackdevice(dev):
+    return dev.fall
     
     
-#def buscarfallbacklista(opc,  lista):
- #   print( "buscarfallback"++opc) 
+
+def buscarfallbacklista(opc,base):
+    lista=[]
+    for x in base:
+        iddev= iddevice ( getDevice( x))
+        cp= fallbackdevice( getDevice( x))
+        if(opc==cp):
+            lista.append(iddev)
+    return lista
+             
  
 def buscarcapabilitylista(opc,base):
     lista=[]
@@ -150,6 +160,16 @@ def buscarcapabilitylista(opc,base):
         if(opc==cp):
             lista.append(iddev)
     return lista
+def eliminarrepetidos(lista):
+    list=[]
+    list.append(lista[0])
+    y=0
+    for x in range(len(lista)):
+        if lista[x]!=list[y]:
+            y=y+1
+            list.append(lista[x])
+    return list
+        
         
         
     
@@ -164,7 +184,9 @@ def buscar(lista,imput):
         print "Ingrese el Fall_back que desea buscar:"
         opc=raw_input("Digite:")
         print  "los device con el fall_back "+opc+" son :"
-        #lsta=  buscarfallbacklista(  opc, base)
+        lsta= eliminarrepetidos( buscarfallbacklista( opc, base))
+        
+        print lsta
         
         print ""
         print ("el numero de dispositivos son: " )
@@ -173,7 +195,7 @@ def buscar(lista,imput):
             print "Ingrese el Capability que desea buscar:"
             opc=raw_input("Digite:")
             print  "los device con el capability "+opc+" son :"
-            lst = buscarcapabilitylista(  opc ,base)
+            lst = eliminarrepetidos(buscarcapabilitylista(  opc ,base))
             print lst 
             print ""
             print ("el numero de dispositivos son: ")
