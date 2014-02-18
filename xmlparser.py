@@ -6,11 +6,11 @@ Created on 26/01/2014
 import sys
 
 class Device:
-    def __init__ (self,id_device,user_agent,fall_back):
+    def __init__ (self,id_device,user_agent,fall_back,root_):
         self.id = id_device
         self.user = user_agent
         self.fall = fall_back
-
+        self.root= root_
     def impridevice (self):
                 print 'Device: id='+self.id+' user_agent='+self.user+' fall_back='+self.fall
 
@@ -55,6 +55,7 @@ def creardevice(lista):
     id=""
     user=""
     fall=""
+    root="false"
     for n in range(len(lista)):
         if lista[n]=='id': 
             id=lista[n+1]
@@ -64,7 +65,10 @@ def creardevice(lista):
             else :
                 if lista[n]=='fall_back': 
                     fall=lista[n+1]
-    return Device(id,user,fall)
+                else :
+                    if lista[n]=='actual_device_root':
+                        root=lista[n+1]
+    return Device(id,user,fall,root)
     
 def creargroup(lista):
     id=""
@@ -88,7 +92,7 @@ def crearcapability(lista):
 
 def prinicpal(lista):
     base =[]
-    d=Device("","","")
+    d=Device("","","","")
     g=Group("")
     c=Capability("","")
     gro=Grupo(d,g,c)
@@ -160,6 +164,7 @@ def buscarcapabilitylista(opc,base):
         if(opc==cp):
             lista.append(iddev)
     return lista
+
 def eliminarrepetidos(lista):
     list=[]
     list.append(lista[0])
@@ -172,11 +177,19 @@ def eliminarrepetidos(lista):
         
         
         
+def imprimirroot(lista):
+    list=[]
+    for n in range(len(lista)):
+        if lista[n].device.root=="true":
+            list.append( lista[n].device.id)
+    return list
     
     
 def buscar(lista,imput):
     base=prinicpal(lista)
-    imprimirbase(base) # no ejecutar si estas con el archivo grande.. XD
+    l=eliminarrepetidos(imprimirroot(base))
+    print l
+    #imprimirbase(base) # no ejecutar si estas con el archivo grande.. XD
     #print lista
     print ":D"
     print "Archivo cargado."
@@ -217,7 +230,7 @@ print "*                                   *"
 print "*************************************"
 print ""
 print ("Leyendo el archivo device.xml")
-with open('test1.xml') as f:
+with open('device.xml') as f:
         lines = f.read().splitlines()
 print "cargado de documento exitoso"
 l=quitarencabezado(lines)
