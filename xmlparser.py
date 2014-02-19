@@ -152,7 +152,7 @@ def buscarfallbacklista(opc,base):
     for x in base:
         iddev= iddevice ( getDevice( x))
         cp= fallbackdevice( getDevice( x))
-        if(opc in cp):
+        if(opc == cp):
             lista.append(iddev)
     return lista
              
@@ -166,9 +166,7 @@ def comprobaarroot(lista ,id,opc,i):
         fall=fallbackdevice( getDevice(  lista[x]))
         if(root=="true"):
             if iddev==id:
-                
                 print  root
-                
                 cp= namecapability ( getCapability(  lista[x]))
                 if(opc == cp):
                     list.append(iddev)
@@ -243,7 +241,6 @@ def buscar(lista,imput):
             print lst 
             print ""
             print ("el numero de dispositivos son: ")
-            
         else :
             sys.exit(1)
     
