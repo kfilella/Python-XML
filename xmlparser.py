@@ -57,6 +57,8 @@ def creardevice(lista):
     user=""
     fall=""
     root="false"
+    print lista
+    print"-----------------------------------"
     for n in range(len(lista)):
         if lista[n]=='id': 
             id=lista[n+1]
@@ -66,6 +68,8 @@ def creardevice(lista):
             else :
                 if lista[n]=='fall_back': 
                     fall=lista[n+1]
+                    if lista[n+1]=="root":
+                        root="true"
                 else :
                     if lista[n]=='actual_device_root':
                         root=lista[n+1]
@@ -117,9 +121,11 @@ def imprimirbase(lista):
         print lista[n].device.id
         print lista[n].device.user
         print lista[n].device.fall
+        print lista[n].device.root
         print lista[n].group.id
         print lista[n].capability.name
         print lista[n].capability.value
+        print "--------------------------"
         
         
 def quitarencabezado(lines):
@@ -152,7 +158,7 @@ def buscarfallbacklista(opc,base):
     for x in base:
         iddev= iddevice ( getDevice( x))
         cp= fallbackdevice( getDevice( x))
-        if(opc == cp):
+        if(opc in cp):
             lista.append(iddev)
     return lista
              
@@ -166,7 +172,9 @@ def comprobaarroot(lista ,id,opc,i):
         fall=fallbackdevice( getDevice(  lista[x]))
         if(root=="true"):
             if iddev==id:
+                
                 print  root
+                print iddev
                 cp= namecapability ( getCapability(  lista[x]))
                 if(opc == cp):
                     list.append(iddev)
@@ -175,6 +183,30 @@ def comprobaarroot(lista ,id,opc,i):
           #      comprobaarroot(lista,fall,opc,d)
     return list
     
+
+def buscarcapabilitylista1(lista,id,opc,ida):
+    
+    l=[]
+    
+    for x in lista:
+        
+        if id==x.device.id and id!="":
+            print id
+            print x.device.id
+            print"-----------------"
+            if opc==x.capability.name:
+                l.append(id)
+                l.append(ida)
+               
+
+    return l
+            
+            
+            
+        
+        
+        
+        
     
     
 def getroot(dev):
@@ -182,16 +214,29 @@ def getroot(dev):
  
 def buscarcapabilitylista(opc,base):
     lista=[]
+    idroot=iddevice ( getDevice( base[0]))
+    rot=base[0].device.root
+    fal=base[0].device.fall
     for x in base:
         root=getroot(getDevice( x))
         iddev= iddevice ( getDevice( x))
         fall=fallbackdevice( getDevice( x))
         cp= namecapability ( getCapability( x))
-        if(opc == cp):
-            lista.append(iddev)
+        if idroot !=iddev: 
+            if(rot=="false"):
+                rot=root
+                lista.extend(buscarcapabilitylista1(base,fal,opc,idroot))
+                fal=fall
+            idroot=iddev
+            
         else:
-            if(root=="false"):
-                lista.append(comprobaarroot(base,fall,opc,0))
+                idroot=iddev
+                fal=fall
+                rot=root
+                if(opc == cp):
+                    lista.append(iddev)
+                
+                    
     return lista
 
 def eliminarrepetidos(lista):
@@ -241,6 +286,7 @@ def buscar(lista,imput):
             print lst 
             print ""
             print ("el numero de dispositivos son: ")
+            
         else :
             sys.exit(1)
     
