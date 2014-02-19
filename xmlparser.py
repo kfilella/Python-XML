@@ -150,16 +150,35 @@ def buscarfallbacklista(opc,base):
         if(opc==cp):
             lista.append(iddev)
     return lista
-             
- 
-def buscarcapabilitylista(opc,base):
+
+def agregartododevice(base):
     lista=[]
     for x in base:
-        iddev= iddevice ( getDevice( x))
-        cp= namecapability ( getCapability( x))
-        if(opc==cp):
-            lista.append(iddev)
+        iddev=iddevice(getdevice(x))
+        lista.append(iddev)
     return lista
+
+def buscarcaparoot(capa,base):
+    for x in base:
+        iddev=iddevice(getDevice(x))
+        cp= namecapability ( getCapability( x))
+        if(iddev=='generic' and cp==capa):
+            return True
+        else :
+            return False
+        
+def buscarcapabilitylista(opc,base):
+    lista=[]
+    if(buscarcaparoot(opc,base)==True):
+        lista.append(agregartododevice(base))
+    else :
+        for x in base:
+            iddev= iddevice ( getDevice( x))
+            cp= namecapability ( getCapability( x))
+            if(opc==cp):
+                lista.append(iddev)
+    return lista
+
 def eliminarrepetidos(lista):
     list=[]
     list.append(lista[0])
@@ -176,7 +195,7 @@ def eliminarrepetidos(lista):
     
 def buscar(lista,imput):
     base=prinicpal(lista)
-    imprimirbase(base) # no ejecutar si estas con el archivo grande.. XD
+    #imprimirbase(base) # no ejecutar si estas con el archivo grande.. XD
     #print lista
     print ":D"
     print "Archivo cargado."
@@ -189,7 +208,7 @@ def buscar(lista,imput):
         print lsta
         
         print ""
-        print ("el numero de dispositivos son: " )
+        print ("el numero de dispositivos son: " +len(str(lsta)))
     else :
         if imput==2:
             print "Ingrese el Capability que desea buscar:"
@@ -198,7 +217,7 @@ def buscar(lista,imput):
             lst = eliminarrepetidos(buscarcapabilitylista(  opc ,base))
             print lst 
             print ""
-            print ("el numero de dispositivos son: ")
+            print ("el numero de dispositivos son: "+len(str(lst)))
             
         else :
             sys.exit(1)
@@ -217,7 +236,7 @@ print "*                                   *"
 print "*************************************"
 print ""
 print ("Leyendo el archivo device.xml")
-with open('test1.xml') as f:
+with open('device.xml') as f:
         lines = f.read().splitlines()
 print "cargado de documento exitoso"
 l=quitarencabezado(lines)
