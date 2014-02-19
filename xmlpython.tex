@@ -120,6 +120,22 @@ La búsqueda en una estructura tan grande consume demasiado tiempo, en el orden 
 Al final nuestro proyecto tiene un alcance incompleto, más que nada debido a la falta de tiempo, experiencia y al hecho de que perdimos muchos días tratando de traducir el proyecto que habíamos realizado anteriormente en Haskell a Python. Nuestro proyecto puede realizar búsquedas lineales como devices que tengan un determinado fallback o determinadas características(capabilities). No puede realizar búsquedas recursivas como producir toda la línea de devices hasta llegar a generic. 
 
 
+\section{Manual de uso}
+
+Nuestro proyecto se puede ejecutar directamente desde el command prompt. Tal como se muestra en la imagen lo primero en mostrarse es un pequeño menú mostrando los créditos del proyecto y el menú principal , en el cual uno puede escoger entre las opciones de búsqueda, sea por fallback, por capability, o por release date. En este ejemplo el usuario procede a buscar devices por su reléase date, opción 3. Solo se debe escribir 3 y aplastar enter.
+
+\includegraphics[width=13cm,height=11cm]{imagenes/mprincipal.jpg}
+
+
+El programa te pregunta la reléase date que deseas ingresar para buscar en el archivo .En este caso deseamos encontrar todos los devices con release date 2011. Digitamos 2011 y presionamos enter, tras lo cual se proceden a imprimir en pantalla todos los devices con esta característica.
+
+
+\includegraphics[width=13cm,height=10cm]{imagenes/usandorelease.jpg}
+
+Luego que se imprimen todos los devices con release date 2011, el programa cuenta cuantos devices son en total y muestra el resultado. Tal como se muestra a continuación. 
+
+\includegraphics[width=13cm,height=11cm]{imagenes/numeroresultado.jpg}
+
 
 \section{Conclusiones}
 

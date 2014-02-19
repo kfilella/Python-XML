@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.16)  19 FEB 2014 11:39
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.16)  19 FEB 2014 12:08
 entering extended mode
 **xmlpython.tex
 (C:\Users\Kevin\workspace\Python-XML\xmlpython.tex
@@ -491,7 +491,7 @@ File: listings.cfg 2013/08/26 1.5b listings configuration
 ))
 Package: listings 2013/08/26 1.5b (Carsten Heinz)
 
-No file xmlpython.aux.
+(C:\Users\Kevin\workspace\Python-XML\xmlpython.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
 LaTeX Font Info:    ... okay on input line 64.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
@@ -504,6 +504,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
 LaTeX Font Info:    ... okay on input line 64.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
 LaTeX Font Info:    ... okay on input line 64.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -566,25 +567,51 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-No file xmlpython.toc.
+(C:\Users\Kevin\workspace\Python-XML\xmlpython.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 2.
+)
 \tf@toc=\write3
-[2] [3] [4] [5] (C:\Users\Kevin\workspace\Python-XML\xmlpython.aux) ) 
+ [2] [3] [4]
+<imagenes/mprincipal.jpg, id=18, 399.74344pt x 248.42813pt>
+File: imagenes/mprincipal.jpg Graphic file (type jpg)
+
+<use imagenes/mprincipal.jpg>
+Package pdftex.def Info: imagenes/mprincipal.jpg used on input line 127.
+(pdftex.def)             Requested size: 369.90326pt x 313.00594pt.
+
+<imagenes/usandorelease.jpg, id=19, 365.86688pt x 304.88907pt>
+File: imagenes/usandorelease.jpg Graphic file (type jpg)
+
+<use imagenes/usandorelease.jpg>
+Package pdftex.def Info: imagenes/usandorelease.jpg used on input line 133.
+(pdftex.def)             Requested size: 369.90782pt x 284.53947pt.
+ [5 <C:/Users/Kevin/workspace/Python-XML/imagenes/mprincipal.jpg>]
+<imagenes/numeroresultado.jpg, id=23, 368.87813pt x 384.6872pt>
+File: imagenes/numeroresultado.jpg Graphic file (type jpg)
+
+<use imagenes/numeroresultado.jpg>
+Package pdftex.def Info: imagenes/numeroresultado.jpg used on input line 137.
+(pdftex.def)             Requested size: 369.88474pt x 313.00368pt.
+ [6 <C:/Users/Kevin/workspace/Python-XML/imagenes/usandorelease.jpg>] [7 <C:/Us
+ers/Kevin/workspace/Python-XML/imagenes/numeroresultado.jpg>] (C:\Users\Kevin\w
+orkspace\Python-XML\xmlpython.aux) ) 
 Here is how much of TeX's memory you used:
- 5707 strings out of 493921
- 82287 string characters out of 3144875
- 151010 words of memory out of 3000000
- 8950 multiletter control sequences out of 15000+200000
- 9089 words of font info for 32 fonts, out of 3000000 for 9000
+ 5734 strings out of 493921
+ 82997 string characters out of 3144875
+ 151033 words of memory out of 3000000
+ 8967 multiletter control sequences out of 15000+200000
+ 10013 words of font info for 35 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 44i,10n,43p,660b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (
-x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb>
-Output written on xmlpython.pdf (5 pages, 62354 bytes).
+ 44i,11n,43p,660b,273s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmss12.pfb>
+Output written on xmlpython.pdf (7 pages, 287713 bytes).
 PDF statistics:
- 34 PDF objects out of 1000 (max. 8388607)
+ 45 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
