@@ -1,0 +1,12 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{3}
+\contentsline {subsection}{\numberline {1.1}Objetivo}{3}
+\contentsline {section}{\numberline {2}Desarrollo}{3}
+\contentsline {subsection}{\numberline {2.1}Desarrollo inicial}{3}
+\contentsline {section}{\numberline {3}Problemas}{3}
+\contentsline {subsection}{\numberline {3.1}Primer Problema - Sintaxis}{3}
+\contentsline {subsection}{\numberline {3.2}Segundo Problema - Estructura}{3}
+\contentsline {subsection}{\numberline {3.3}Tercer Problema - Recursividad}{4}
+\contentsline {subsection}{\numberline {3.4}Cuarto Problema - Busquedas}{4}
+\contentsline {section}{\numberline {4}Alcance del Proyecto}{4}
+\contentsline {section}{\numberline {5}Conclusiones}{4}

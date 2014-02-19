@@ -1,7 +1,12 @@
 '''
-Created on 26/01/2014
+Kevin Filella Lok -- 200800084
 
-@author: adrian
+COMANDOS PARA LA SUSTENTACION
+
+INGRESAR 3 PARA RELEASE DATE
+INGRESAR 4 PARA RECORRIDO HASTA EL ROOT
+
+NOTA : EL ARCHIVO XML DE NUESTRO PROYECTO SE LLAMA "device.xml", RENOMBRAR
 '''
 import sys
 
@@ -129,18 +134,18 @@ def quitarencabezado(lines):
     
 def getDevice(grup):
     return grup.device
-
 def iddevice(dev):
     return dev.id
 def getCapability(gru):
     return gru.capability
-    
+
+def valuecapability(capa):
+    return capa.value
+
 def namecapability(capa):
     return capa.name
 def fallbackdevice(dev):
     return dev.fall
-    
-    
 
 def buscarfallbacklista(opc,base):
     lista=[]
@@ -188,10 +193,43 @@ def eliminarrepetidos(lista):
             y=y+1
             list.append(lista[x])
     return list
-        
-        
-        
-    
+
+####################################
+####################################
+########## EJERCICIO 1 #############
+####################################
+####################################
+
+# ESTADO - FUNCIONAL
+# NOTAS - La funcion compara el 'name' del capability para que sea "release_date", si se cumple esto,
+#         verifica el 'value' de este capability para que empiece con el anio ingresado por el usuario,
+#         si se cumple, se agrega a una lista. Al final, retorna la lista con los ID de los devices.
+def buscarreleasedate(opc,base):
+    list=[]
+    for x in base:
+        iddev = iddevice(getDevice(x))
+        namecp = namecapability(getCapability(x))
+        valuecp = valuecapability(getCapability(x))
+        if (namecp=="release_date" and (opc in valuecp)):
+            list.append(iddev)
+    return list
+
+####################################
+####################################
+########## EJERCICIO 2 #############
+####################################
+####################################
+
+# ESTADO - INCOMPLETO
+# NOTAS - La recursion se vuelve infinita y excede el limite de recursion de Python (14000), asi que se intento hacer una version iterativa.
+def recorridoericsson(base,opc):
+    list=[]
+    for x in base:
+        iddev = iddevice(getDevice(x))
+        falldev = fallbackdevice(getDevice(x))
+        if((iddev.startswith(opc) and falldev.startswith(opc)) or (iddev.startswith(opc) and falldev.startswith("generic")) or ((opc in iddev) and ("generic" in falldev)) or (iddev == "generic") or (iddev=="generic_xhtml") or (iddev=="generic_mobile")):
+            list.append(iddev)
+    return list
     
 def buscar(lista,imput):
     base=prinicpal(lista)
@@ -209,18 +247,30 @@ def buscar(lista,imput):
         
         print ""
         print ("el numero de dispositivos son: " )
+    if imput==2:
+        print "Ingrese el Capability que desea buscar:"
+        opc=raw_input("Digite:")
+        print  "los device con el capability "+opc+" son :"
+        lst = eliminarrepetidos(buscarcapabilitylista(  opc ,base))
+        print lst 
+        print ""
+        print ("el numero de dispositivos son: " )
+    if imput==3:
+        print "Ingrese el release date: "
+        opc=raw_input("Digite: ")
+        print  "los devices con release date "+opc+" son :"
+        lst1 = eliminarrepetidos(buscarreleasedate(opc,base))
+        print lst1
+        print ""
+        print ("el numero de devices es: "+str(len(lst1)))
+    if imput==4:
+        print "Ingrese el ID para recorrido: "
+        opc=raw_input("Digite: ")
+        print "Los fall_backs que cumplen con la condicion son: "
+        lst2 = eliminarrepetidos(recorridoericsson(base,opc))
+        print lst2
     else :
-        if imput==2:
-            print "Ingrese el Capability que desea buscar:"
-            opc=raw_input("Digite:")
-            print  "los device con el capability "+opc+" son :"
-            lst = eliminarrepetidos(buscarcapabilitylista(  opc ,base))
-            print lst 
-            print ""
-            print ("el numero de dispositivos son: " )
-            
-        else :
-            sys.exit(1)
+        sys.exit(1)
     
     
     
@@ -245,6 +295,8 @@ lista = quitarBasura(l)
 print "que desea realizar?"
 print "1.-buscar device por fall Back"
 print "2.-buscar device por capability"
+print "3.-RELEASE DATE"
+print "4.-ROOT"
 print "3.-salir"
 n = input("Digite:")
 print n
